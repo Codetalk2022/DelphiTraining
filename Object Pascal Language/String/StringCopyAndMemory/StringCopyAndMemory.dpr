@@ -14,7 +14,7 @@ const
 
 resourcestring
   Question1 =
-    'SampleString2 := SampleString1 처럼 ' + sLineBreak +
+    'S2 := S1 처럼 ' + sLineBreak +
     'String 변수를 또 다른 변수에 복사(할당)하면 어떻게 될까?' +  sLineBreak;
   Comment1 =
     '새 변수에는 기존 변수와 동일한 메모리 주소가 들어간다.' +  sLineBreak +
@@ -26,7 +26,7 @@ resourcestring
     '이 값이 1만큼 증가한다 (더 이상 사용되지 않는 String은 참조 갯수가 0이 된다. 그러면 ' +
     '그 String은 메모리에서 자동으로 제거되고 반환된다)' + sLineBreak;
   Question2 =
-    'SampleString2[1] := ''a'' 처럼 ' + sLineBreak +
+    'S2[1] := ''a'' 처럼 ' + sLineBreak +
     '같은 String을 가리키던 변수 중 하나가 String 값을 변경하면 어떻게 될까?' + sLineBreak;
   Comment2 =
     '변경 시점에 Heap에는 새 String 데이터를 담은 메모리 블록이 새로 생기고 ' +
@@ -38,7 +38,7 @@ resourcestring
     + sLineBreak;
 
 var
-  SampleString1, SampleString2, Summary : string;
+  S1, S2, Summary : string;
 
 // Heap의 주소와 참조 갯수을 파악===============================================
 function MemoryInfo (const AStrIdentifier, AStr: string): string;
@@ -54,8 +54,8 @@ end; //=========================================================================
 
 procedure PrintResult;
 begin
-  WriteLn (MemoryInfo('SampleString1', SampleString1));
-  WriteLn (MemoryInfo('SampleString2',SampleString2));
+  WriteLn (MemoryInfo('S1', S1));
+  WriteLn (MemoryInfo('S2',S2));
 end;
 
 procedure PrintLineSeparator;
@@ -77,14 +77,14 @@ begin
 end;
 
 begin
-  SampleString1 := SAMPLE_TEXT;     // String.Create(['반','가','워']);
-  WriteLn (MemoryInfo('SampleString1', SampleString1));
+  S1 := SAMPLE_TEXT;     // String.Create(['반','가','워']);
+  WriteLn (MemoryInfo('S1', S1));
   AskToGoNext;
   //----------------------------------------------------------------------------
   WriteLn(Question1);
   AskToGoNext;
 
-  SampleString2 := SampleString1;
+  S2 := S1;
 
   PrintResult;
   WriteLn(Comment1);
@@ -94,7 +94,7 @@ begin
   AskToGoNext;
 
   {$ZEROBASEDSTRINGS ON}
-  SampleString2[1] := 'a';
+  S2[1] := 'a';
   {$ZEROBASEDSTRINGS OFF}
 
   PrintResult;
