@@ -38,9 +38,9 @@ resourcestring
     + sLineBreak;
 
 var
-  S1, S2, Summary : string;
+  S1, S2 : string;
 
-// Heap의 주소와 참조 갯수을 파악===============================================
+// Heap의 주소와 참조 갯수를 파악===============================================
 function MemoryInfo (const AStrIdentifier, AStr: string): string;
 begin
   Result := AStrIdentifier + ' = ' + AStr + sLineBreak +
@@ -55,7 +55,7 @@ end; //=========================================================================
 procedure PrintResult;
 begin
   WriteLn (MemoryInfo('S1', S1));
-  WriteLn (MemoryInfo('S2',S2));
+  WriteLn (MemoryInfo('S2', S2));
 end;
 
 procedure PrintLineSeparator;
